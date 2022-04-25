@@ -1,0 +1,39 @@
+﻿@using AspNetMVC1.Models.Entity
+@model List<TBLPRODUCT>
+
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<table class="table table-bordered" >
+    <tr>
+        <th>Product ID</th>
+        <th>Product Name</th>
+        <th>Product Ex Date</th>
+        <th>Product Brand</th>
+        <th>Product Quantity</th>
+       
+
+
+    </tr>
+    <tbody>
+        @foreach(var prdct in Model)
+            {<tr>
+                 <td>@prdct.PRODUCTID</td>
+                 <td>@prdct.PRODUCTAD</td>
+                 <td>@prdct.SKT</td>
+                 <td>@prdct.TBLMARKA.MARKAAD</td>
+                 <td>@prdct.ADET</td>
+                 <td><a href="/Product/Sil/@prdct.PRODUCTID" class="btn btn-danger" >Delete</a></td>
+                 <td><a href="/Product/Update/@prdct.PRODUCTID" class="btn btn-success" >Update</a></td>
+            </tr>
+
+            }
+
+    </tbody>
+</table>
+<a href="/Product/NewProduct" class="btn btn-primary">New Product Add</a>
+

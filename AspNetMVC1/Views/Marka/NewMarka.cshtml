@@ -1,0 +1,29 @@
+﻿@model AspNetMVC1.Models.Entity.TBLMARKA
+@{
+    ViewBag.Title = "NewMarka";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewBag.Messag</h2>
+
+<form method="post" class="form-group">
+    <div>
+        <label>Marka Ad</label>
+        @*<input type="text" class="form-control" name="MARKAAD" />*@
+        @Html.TextBoxFor(m => m.MARKAAD, new  { @class = "form-control"})
+        @Html.ValidationMessageFor(m => m.MARKAAD,"", new  { @style = "color:red"})
+    </div>
+    <div>
+        <label>TOPTANCI</label> 
+        @Html.DropDownListFor(m => m.TOPTANCI, (List<SelectListItem>)ViewBag.degerler, new { @class="form-control"})
+    </div>
+    <div>
+        <button class="btn btn-info" id="btnadd">Marka Ekle</button>
+    </div>
+    <script>
+        $('#btnadd').click(function () {
+            alert('Marka Ekleme İşlemi Yapıldı...!');
+        });
+    </script>
+
+</form>

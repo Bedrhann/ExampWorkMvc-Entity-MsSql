@@ -1,0 +1,34 @@
+﻿@model AspNetMVC1.Models.Entity.TBLTOPTANCI 
+@{
+    ViewBag.Title = "Update";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("UpdateExecute","Toptanci", FormMethod.Post))
+            {
+<div class="form-group">
+    @Html.LabelFor(m => m.TOPTANCIID)
+    @Html.TextBoxFor(m => m.TOPTANCIID, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(m => m.TOPTANCIAD)
+    @Html.TextBoxFor(m => m.TOPTANCIAD, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(m => m.TOPTANCISOYAD)
+    @Html.TextBoxFor(m => m.TOPTANCISOYAD, new { @class = "form-control" })
+
+
+</div>
+<div>
+    <button class="btn btn-warning" id="btnUpdate"> Toptancı Güncelle</button>
+
+</div>
+            }
+<script>
+    $('#btnUpdate').click(function () {
+        alert('Toptancı Güncellleme İşlemi Yapıldı...!');
+    });
+</script>
+
+
+
+

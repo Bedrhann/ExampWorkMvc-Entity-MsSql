@@ -1,0 +1,35 @@
+﻿@model AspNetMVC1.Models.Entity.TBLPRODUCT
+@{
+    ViewBag.Title = "NewProduct";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewBag.Message</h2>
+
+<form method="post" class="form-group">
+    <div>
+        <label>Product Ad</label>
+        <input type="text" class="form-control" name="PRODUCTAD" required="" />
+    </div>
+    <div>
+        <label>Product SKT</label>
+        <input type="text" class="form-control" name="SKT" />
+    </div>
+    <div>
+        <label>Product MARKA</label>
+        @Html.DropDownListFor(m => m.TBLMARKA.MARKALARID, (List<SelectListItem>)ViewBag.degerler, new { @class = "form-control" })
+    </div>
+    <div>
+        <label>Product ADET</label>
+        <input type="text" class="form-control" name="ADET" />
+    </div>
+    <div>
+        <button class="btn btn-info" id="btnadd">Product Ekle</button>
+    </div>
+    <script>
+        $('#btnadd').click(function () {
+            alert('Product Ekleme İşlemi Yapıldı...!');
+        });
+    </script>
+</form>
+

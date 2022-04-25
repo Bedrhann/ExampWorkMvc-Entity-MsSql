@@ -1,0 +1,32 @@
+﻿@model AspNetMVC1.Models.Entity.TBLMARKA
+@{
+    ViewBag.Title = "Update";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("UpdateExecute", "Marka", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.MARKALARID)
+        @Html.TextBoxFor(m => m.MARKALARID, new { @class = "form-control" })
+        <br />
+        @Html.LabelFor(m => m.MARKAAD)
+        @Html.TextBoxFor(m => m.MARKAAD, new { @class = "form-control" })
+        <br />
+        @Html.LabelFor(m => m.TOPTANCI)
+        @Html.DropDownListFor(m => m.TOPTANCI, (List<SelectListItem>)ViewBag.degerler, new { @class = "form-control" })
+        <br />
+
+
+    </div>
+    <div>
+        <button class="btn btn-warning" id="btnUpdate"> Marka Güncelle</button>
+
+    </div>
+    
+}
+<script>
+    $('#btnUpdate').click(function () {
+        alert('Marka Güncellleme İşlemi Yapıldı...!');
+    });
+</script>

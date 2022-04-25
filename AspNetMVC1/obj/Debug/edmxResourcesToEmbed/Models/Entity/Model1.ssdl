@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DbMarketModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="TBLMARKA">
+    <Key>
+      <PropertyRef Name="MARKALARID" />
+    </Key>
+    <Property Name="MARKALARID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MARKAAD" Type="nvarchar" MaxLength="20" />
+    <Property Name="TOPTANCI" Type="int" />
+  </EntityType>
+  <EntityType Name="TBLPRODUCT">
+    <Key>
+      <PropertyRef Name="PRODUCTID" />
+    </Key>
+    <Property Name="PRODUCTID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PRODUCTAD" Type="nvarchar" MaxLength="50" />
+    <Property Name="SKT" Type="nvarchar" MaxLength="50" />
+    <Property Name="MARKA" Type="int" />
+    <Property Name="ADET" Type="int" />
+    <Property Name="FOTOGRAF" Type="nvarchar" MaxLength="150" />
+  </EntityType>
+  <EntityType Name="TBLTOPTANCI">
+    <Key>
+      <PropertyRef Name="TOPTANCIID" />
+    </Key>
+    <Property Name="TOPTANCIID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TOPTANCIAD" Type="nvarchar" MaxLength="50" />
+    <Property Name="TOPTANCISOYAD" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK_TBLMARKA_TBLTOPTANCI">
+    <End Role="TBLTOPTANCI" Type="Self.TBLTOPTANCI" Multiplicity="0..1" />
+    <End Role="TBLMARKA" Type="Self.TBLMARKA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBLTOPTANCI">
+        <PropertyRef Name="TOPTANCIID" />
+      </Principal>
+      <Dependent Role="TBLMARKA">
+        <PropertyRef Name="TOPTANCI" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TBLPRODUCT_TBLMARKA">
+    <End Role="TBLMARKA" Type="Self.TBLMARKA" Multiplicity="0..1" />
+    <End Role="TBLPRODUCT" Type="Self.TBLPRODUCT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBLMARKA">
+        <PropertyRef Name="MARKALARID" />
+      </Principal>
+      <Dependent Role="TBLPRODUCT">
+        <PropertyRef Name="MARKA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DbMarketModelStoreContainer">
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBLMARKA" EntityType="Self.TBLMARKA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBLPRODUCT" EntityType="Self.TBLPRODUCT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBLTOPTANCI" EntityType="Self.TBLTOPTANCI" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_TBLMARKA_TBLTOPTANCI" Association="Self.FK_TBLMARKA_TBLTOPTANCI">
+      <End Role="TBLTOPTANCI" EntitySet="TBLTOPTANCI" />
+      <End Role="TBLMARKA" EntitySet="TBLMARKA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TBLPRODUCT_TBLMARKA" Association="Self.FK_TBLPRODUCT_TBLMARKA">
+      <End Role="TBLMARKA" EntitySet="TBLMARKA" />
+      <End Role="TBLPRODUCT" EntitySet="TBLPRODUCT" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,35 @@
+﻿@using AspNetMVC1.Models.Entity
+@model List<TBLTOPTANCI>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<table class="table table-bordered">
+    <tr>
+        <th>WholeSaler ID</th>
+        <th>WholeSaler AD</th>
+        <th>WholeSaler SOYAD</th>
+        
+
+
+    </tr>
+    <tbody>
+        @foreach (var tptn in Model)
+        {
+        <tr>
+            <td>@tptn.TOPTANCIID</td>
+            <td>@tptn.TOPTANCIAD</td>
+            <td>@tptn.TOPTANCISOYAD</td>
+            <td><a href="/Toptanci/Sil/@tptn.TOPTANCIID" class="btn btn-danger">Delete</a></td>
+            <td><a href="/Toptanci/Update/@tptn.TOPTANCIID" class="btn btn-success">Update</a></td>
+        </tr>
+
+        }
+
+    </tbody>
+
+</table>
+<a href="/Toptanci/NewToptanci" class="btn btn-primary">New WholeSaler Add</a>

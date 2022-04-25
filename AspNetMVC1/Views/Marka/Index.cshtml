@@ -1,0 +1,32 @@
+﻿@using AspNetMVC1.Models.Entity
+@model List<TBLMARKA>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<table class="table table-bordered">
+    <tr>
+        <th>Brand ID</th>
+        <th>Brand AD</th>
+        <th>WholeSaler</th>
+     
+    </tr>
+    <tbody>
+        @foreach (var mrk in Model)
+        {
+        <tr>
+            <td>@mrk.MARKALARID</td>
+            <td>@mrk.MARKAAD</td>
+            <td>@mrk.TBLTOPTANCI.TOPTANCIAD</td>
+            <td><a href="/Marka/Sil/@mrk.MARKALARID" class="btn btn-danger">SİL</a></td>
+            <td><a href="/Marka/Update/@mrk.MARKALARID" class="btn btn-success">Update</a></td>
+        </tr>
+
+        }
+
+    </tbody>
+
+</table>
+<a href="/Marka/NewMarka" class="btn btn-primary">New Brand Add</a>

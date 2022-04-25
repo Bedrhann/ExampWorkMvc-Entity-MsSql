@@ -1,0 +1,29 @@
+﻿@model AspNetMVC1.Models.Entity.TBLTOPTANCI
+@{
+    ViewBag.Title = "NewToptanci";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewBag.Message</h2>
+
+<form method="post" class="form-group">
+    <div>
+        <label>Toptancı Ad</label>
+        @Html.TextBoxFor(m => m.TOPTANCIAD, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.TOPTANCIAD, "", new { @style = "color:red" })
+    </div>
+    <div>
+        <label>Toptancı Soyad</label>
+        @Html.TextBoxFor(m => m.TOPTANCISOYAD, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.TOPTANCISOYAD, "", new { @style = "color:red" })
+    </div>
+    <div>
+        <button class="btn btn-info" id="btnadd">Toptanci Ekle</button>
+    </div>
+    <script>
+        $('#btnadd').click(function () {
+            alert('Toptancı Ekleme İşlemi Yapıldı...!');
+        });
+    </script>
+</form>
+
